@@ -1,19 +1,11 @@
 // Categories.jsx
 import React from "react";
 import CategoriesCard from "./CategoriesCard";
+import { categories } from "../data/categories";
 
 const Categories = () => {
-  const categories = [
-    { label: "protein", slug: "protein" },
-    { label: "creatine", slug: "creatine" },
-    { label: "vitamins", slug: "vitamins" },
-    { label: "snacks", slug: "snacks" },
-    { label: "pre-workout", slug: "pre-workout" },
-    { label: "active wear", slug: "active-wear" },
-  ];
-
   return (
-    <section className="my-32">
+    <section>
       <div className="max-w-5xl mx-auto px-4 space-y-8">
         <h1 className="text-center uppercase font-bold text-2xl tracking-wide">
           Categories
