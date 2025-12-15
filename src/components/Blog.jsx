@@ -9,7 +9,7 @@ const Blog = () => {
           Popular Blogs
         </h1>
 
-        <div className="flex justify-between overflow-x-auto space-x-4 px-6">
+        <div className="flex gap-4 overflow-x-auto px-6 scrollbar-hide">
           {blogs.map((b) => (
             <BlogCard
               id={b.id}
