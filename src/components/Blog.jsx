@@ -11,14 +11,7 @@ const Blog = () => {
 
         <div className="flex gap-4 overflow-x-auto px-6 scrollbar-hide">
           {blogs.map((b) => (
-            <BlogCard
-              id={b.id}
-              image={b.image}
-              authorImg={b.authorImg}
-              title={b.title}
-              description={b.description}
-              author={b.author}
-            />
+            <BlogCard key={b.id} {...b} />
           ))}
         </div>
       </div>
