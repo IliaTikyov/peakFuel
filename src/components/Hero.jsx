@@ -3,7 +3,7 @@ const Hero = () => {
     <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px]">
       {/* Background Image */}
       <img
-        src="protein.jpg"
+        src="protein.webp"
         alt="protein"
         className="w-full h-full object-cover brightness-75"
       />

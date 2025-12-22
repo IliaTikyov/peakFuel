@@ -1,25 +1,19 @@
-import React from "react";
-import { bestSellers } from "../data/bestSellers";
-import { ShoppingBasket } from "lucide-react";
+import React, { useState } from "react";
+import { products } from "../data/products";
 import BestSellersCard from "./BestSellersCard";
+import GridProducts from "./GridProducts";
 
 const BestSellers = () => {
-  const renderStars = (rating) => {
-    const fullStars = Math.max(0, Math.min(5, Math.floor(rating)));
+  const [visibleItemCount, setVisibleItemCount] = useState(4);
 
-    if (fullStars === 0)
-      return <span className="text-slate-500">No ratings</span>;
+  const bestSellers = products.filter((b) => b.isBestSeller);
 
-    return (
-      <span
-        className="text-amber-500"
-        aria-label={`Rating ${fullStars} out of 5`}
-      >
-        {Array.from({ length: fullStars }).map((_, i) => (
-          <span key={i}>★</span>
-        ))}
-      </span>
-    );
+  const handleLoadMore = () => {
+    setVisibleItemCount((prev) => prev + 4);
+  };
+
+  const handShowLess = () => {
+    setVisibleItemCount(4);
   };
 
   return (
@@ -28,19 +22,29 @@ const BestSellers = () => {
         <h1 className="text-center uppercase font-bold text-2xl tracking-wide">
           Best Sellers
         </h1>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
-          {bestSellers.map((b) => (
-            <BestSellersCard
-              id={b.id}
-              image={b.image}
-              name={b.name}
-              price={b.price}
-              originalPrice={b.originalPrice}
-              rating={b.rating}
-              reviews={b.reviews}
-              category={b.category}
-            />
+
+        <GridProducts>
+          {bestSellers.slice(0, visibleItemCount).map((b) => (
+            <BestSellersCard key={b.id} {...b} />
           ))}
+        </GridProducts>
+        <div className="flex justify-center text-white font-semibold">
+          {visibleItemCount < bestSellers.length && (
+            <button
+              className="bg-emerald-300 px-4 py-2 rounded-full hover:bg-white hover:text-emerald-300 hover:border-emerald-300 border transition duration-200"
+              onClick={handleLoadMore}
+            >
+              Show More
+            </button>
+          )}
+          {visibleItemCount > 4 && (
+            <button
+              className="bg-emerald-300 px-4 py-2 rounded-full hover:bg-white hover:text-emerald-300 hover:border-emerald-300 border transition duration-200"
+              onClick={handShowLess}
+            >
+              Show Less
+            </button>
+          )}
         </div>
       </div>
     </section>

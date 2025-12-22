@@ -1,15 +1,22 @@
 import { X, Menu, Search, ArrowLeft } from "lucide-react";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   /*Mobile Functionality Only*/
   const [isOpen, setIsOpen] = useState(false); // mobile menu
   const [isSearchOpen, setIsSearchOpen] = useState(false); // mobile search
 
+  const location = useLocation();
+
   /*Mobile Functionality Only*/
   const handleMenuToggle = () => setIsOpen((prev) => !prev);
   const handleSearchToggle = () => setIsSearchOpen((prev) => !prev);
+
+  useEffect(() => {
+    setIsOpen(false);
+    setIsSearchOpen(false);
+  }, [location.pathname]);
 
   return (
     <main>
