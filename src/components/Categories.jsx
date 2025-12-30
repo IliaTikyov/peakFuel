@@ -10,7 +10,7 @@ const Categories = () => {
         <h1 className="text-center uppercase font-bold text-2xl tracking-wide">
           Categories
         </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {categories.map((cat) => (
             <CategoriesCard
               key={cat.slug}
