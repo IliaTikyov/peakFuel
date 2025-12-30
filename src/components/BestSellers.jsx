@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { products } from "../data/products";
-import BestSellersCard from "./BestSellersCard";
+import ProductCards from "../components/ProductCards";
 import GridProducts from "./GridProducts";
 
 const BestSellers = () => {
@@ -25,7 +25,7 @@ const BestSellers = () => {
 
         <GridProducts>
           {bestSellers.slice(0, visibleItemCount).map((b) => (
-            <BestSellersCard key={b.id} {...b} />
+            <ProductCards key={b.id} {...b} />
           ))}
         </GridProducts>
         <div className="flex justify-center text-white font-semibold">
